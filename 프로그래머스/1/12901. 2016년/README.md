@@ -1,6 +1,6 @@
 # [level 1] 2016년 - 12901 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12901?language=python3) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12901) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 11월 06일 16:13:27
+2024년 11월 06일 16:29:05
 
 ### 문제 설명
 
