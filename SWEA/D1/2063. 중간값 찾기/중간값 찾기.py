@@ -1,4 +1,4 @@
-T = int(input())
-a = list(map(int, input().split()))
-a_sort = sorted(a)
-print(a_sort[len(a_sort) // 2])
+a = int(input())
+b = list(map(int, input().split()))
+sorted_b = sorted(b)
+print(sorted_b[len(b) // 2])
