@@ -1,21 +1,25 @@
 T = int(input())
+di = [0, 1, 0, -1]
+dj = [1, 0, -1, 0]
 for t in range(1, T + 1):
-    n = int(input())
-    matrix = [[0] * n for i in range(n)]
-    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-    direction_idx = 0
-    row, col = 0, 0
-    for i in range(1, n * n + 1):
-        matrix[row][col] = i
-        next_row = row + directions[direction_idx][0]
-        next_col = col + directions[direction_idx][1]
-        if (next_row < 0 or next_row >= n or next_col < 0 or next_col >= n or matrix[next_row][next_col] != 0):
-            direction_idx = (direction_idx + 1) % 4
-            next_row = row + directions[direction_idx][0]
-            next_col = col + directions[direction_idx][1]
-        row, col = next_row, next_col
+    N = int(input())
+    arr = [[0] * N for _ in range(N)]
+    
+    i, j, cnt, dr = 0, 0, 1, 0
+    arr[i][j] = cnt
+    cnt += 1
+    
+    while cnt <= N * N:
+        ni, nj = i + di[dr], j + dj[dr]
+        
+        if 0 <= ni < N and 0 <= nj < N and arr[ni][nj] == 0:
+            i, j = ni, nj
+            arr[i][j] = cnt
+            cnt += 1
+        else:
+            dr = (dr + 1) % 4
+    
     print(f'#{t}')
-    for row in matrix:
-        print(' '.join(map(str, row)))
-        
-        
+    for lst in arr:
+        print(*lst)
+            
