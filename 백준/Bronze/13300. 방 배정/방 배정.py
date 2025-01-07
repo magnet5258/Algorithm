@@ -9,7 +9,7 @@ for lst in arr:
         if x.count(lst[1]) == 1:
             ans += 1
         elif x.count(lst[1]) > K:
-            x = [i for i in lst if i != lst[1]]
+            x = [i for i in x if i != lst[1]]
             x.append(lst[1])
             ans += 1
     else:
@@ -17,7 +17,7 @@ for lst in arr:
         if y.count(lst[1]) == 1:
             ans += 1
         elif y.count(lst[1]) > K:
-            y = [i for i in lst if i != lst[1]]
+            y = [i for i in y if i != lst[1]]
             y.append(lst[1])
             ans += 1
 print(ans)
