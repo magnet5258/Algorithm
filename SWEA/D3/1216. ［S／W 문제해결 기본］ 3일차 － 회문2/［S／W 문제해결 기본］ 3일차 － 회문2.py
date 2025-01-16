@@ -1,4 +1,4 @@
-def isPalindrome(string, start, end):
+def is_palindrome(string, start, end):
     while start < end:
         if string[start] != string[end]:
             return False
@@ -6,35 +6,34 @@ def isPalindrome(string, start, end):
         end -= 1
     return True
 
-
-def findLongestPalindrome(board, L):
+def find_longest_palindrome(grid, size):
     max_length = 1
 
-    # 행 탐색
-    for row in range(L):
-        for start in range(L):
-            for end in range(L - 1, start + max_length - 1, -1):
-                if isPalindrome(board[row], start, end):
+    # 가로 방향 회문 탐색
+    for row in range(size):
+        for start in range(size):
+            for end in range(size - 1, start + max_length - 1, -1):
+                if is_palindrome(grid[row], start, end):
                     max_length = max(max_length, end - start + 1)
                     break
 
-    # 열 탐색
-    for col in range(L):
-        for start in range(L):
-            for end in range(L - 1, start + max_length - 1, -1):
-                column_string = [board[row][col] for row in range(start, end + 1)]
-                if isPalindrome(column_string, 0, end - start):
+    # 세로 방향 회문 탐색
+    for col in range(size):
+        for start in range(size):
+            for end in range(size - 1, start + max_length - 1, -1):
+                column_string = [grid[row][col] for row in range(start, end + 1)]
+                if is_palindrome(column_string, 0, end - start):
                     max_length = max(max_length, end - start + 1)
                     break
 
     return max_length
 
-
+# 테스트 케이스 실행
 T = 10
-L = 100
+N = 100  # 글자판의 크기
 
 for _ in range(T):
-    test_case = int(input())
-    board = [input() for _ in range(L)]
-    result = findLongestPalindrome(board, L)
+    test_case = int(input())  # 테스트 케이스 번호
+    board = [input().strip() for _ in range(N)]  # 글자판 입력
+    result = find_longest_palindrome(board, N)
     print(f'#{test_case} {result}')
