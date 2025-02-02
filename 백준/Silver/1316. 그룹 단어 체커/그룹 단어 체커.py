@@ -1,17 +1,19 @@
 N = int(input())
-cnt = 0
-for _ in range(N):
+lst = []
+for i in range(N):
     word = input()
-    seen = set()
-    prev = ''
-    is_group = True
-    for i in word:
-        if i in seen and i != prev:
-            is_group = False
-            break
-        else:
-            seen.add(i)
-            prev = i
-    if is_group:
-        cnt += 1
-print(cnt)
+    lst.append(word)
+group = 0
+for word in lst:
+    word_set = set(word)
+    cnt = 0
+    for j in word_set:
+        num = 1
+        for k in range(len(word) - 1):
+            if word[k] == j and word[k + 1] == j:
+                num += 1
+        if word.count(j) == num:
+            cnt += 1
+    if cnt == len(word_set):
+        group += 1
+print(group)
