@@ -1,8 +1,5 @@
 from collections import deque
 
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-
 directions = {
     1: [(0, -1), (0, 1), (-1, 0), (1, 0)],
     2: [(-1, 0), (1, 0)],
@@ -22,18 +19,18 @@ reverse_check = {
 
 def catch(x, y):
     global cnt
+    
     queue = deque([(x, y)])
     visited = set()
     visited.add((x, y))
     cnt = 1
-
     time = 1
+    
     while time < L:
         size = len(queue)
         for _ in range(size):
             x, y = queue.popleft()
             current_type = arr[x][y]
-
             for dx, dy in directions[current_type]:
                 nx, ny = x + dx, y + dy
                 if 0 <= nx < N and 0 <= ny < M and (nx, ny) not in visited:
@@ -42,7 +39,7 @@ def catch(x, y):
                         queue.append((nx, ny))
                         visited.add((nx, ny))
                         cnt += 1
-
+                        
         time += 1
 
 T = int(input())
