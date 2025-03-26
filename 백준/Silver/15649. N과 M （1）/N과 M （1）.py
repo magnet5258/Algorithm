@@ -1,0 +1,7 @@
+from itertools import permutations
+
+N, M = map(int, input().split())
+lst = list(range(1, N + 1))
+combs = permutations(lst, M)
+for comb in combs:
+    print(*comb)
