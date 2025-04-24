@@ -18,7 +18,7 @@ def find_num(depth, start_idx, total):
         x, y = divmod(idx, M)
         if not visited[x][y] and not is_adjacent(x, y):
             visited[x][y] = True
-            find_num(depth + 1, start_idx + 1, total + arr[x][y])
+            find_num(depth + 1, idx + 1, total + arr[x][y])
             visited[x][y] = False
 
 N, M, K = map(int, input().split())
