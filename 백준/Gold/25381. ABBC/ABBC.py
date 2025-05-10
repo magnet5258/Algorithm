@@ -1,21 +1,26 @@
-S = input()[::-1]
-a, b, c = 0, 0, 0
-cnt = 0
+from collections import deque
 
-for ch in S:
+S = input()
+A_pos, b_noA, b_withA = [], deque(), deque()
+seen_A, cnt = False, 0
+
+for i, ch in enumerate(S):
     if ch == 'A':
-        if b > 0:
-            b -= 1
-            cnt += 1
-        else:
-            a += 1
+        seen_A = True
+        A_pos.append(i)
     elif ch == 'B':
-        if c > 0:
-            c -= 1
+        (b_withA if seen_A else b_noA).append(i)
+    elif ch == 'C':
+        target = b_noA if b_noA else b_withA
+        if target:
+            target.popleft()
             cnt += 1
-        else:
-            b += 1
-    else:
-        c += 1
+
+ai = bi = 0
+while ai < len(A_pos) and bi < len(b_withA):
+    if A_pos[ai] < b_withA[bi]:
+        cnt += 1
+        ai += 1
+    bi += 1
 
 print(cnt)
