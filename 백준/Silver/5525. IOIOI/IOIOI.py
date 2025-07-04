@@ -2,16 +2,20 @@ N = int(input())
 M = int(input())
 S = input()
 
-P = ''
-for _ in range(N + 1):
-    if P and P[-1] == 'I':
-        P += 'O'
-    P += 'I'
-
-lp = len(P)
+i = 0
 cnt = 0
-for i in range(len(S)):
-    if S[i:i + lp] == P:
-        cnt += 1
+
+while i < M - 1:
+    if S[i] == 'I':
+        temp = 0
+        while i + 2 < M and S[i + 1] == 'O' and S[i + 2] == 'I':
+            temp += 1
+            i += 2
+        if temp >= N:
+            cnt += temp - N + 1
+        else:
+            i += 1
+    else:
+        i += 1
 
 print(cnt)
