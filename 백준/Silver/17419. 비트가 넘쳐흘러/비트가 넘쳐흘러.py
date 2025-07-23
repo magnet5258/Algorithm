@@ -1,9 +1,4 @@
 N = int(input())
-K = int(input(), 2)
-cnt = 0
+K = input()
 
-while K != 0:
-    K = K - (K & -K)
-    cnt += 1
-
-print(cnt)
+print(K.count('1'))
